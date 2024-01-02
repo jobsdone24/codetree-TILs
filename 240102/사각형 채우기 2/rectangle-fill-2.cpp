@@ -10,7 +10,7 @@ int main() {
 	for (int i = 3; i <= n; i++) {
 		s[i] = s[i - 1] + 2*s[i - 2];
 		if (s[i] == 0)continue;
-		else s[i] %= 1007;
+		else s[i] %= 10007;
 	}
 	cout << s[n];
 }
