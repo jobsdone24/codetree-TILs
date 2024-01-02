@@ -6,6 +6,7 @@ int main() {
 	int n;
 	cin >> n;
 	s[2] = 1;
+    s[3] = 1;
 	for (int i = 3; i <= 1000; i++) {
 		s[i] = s[i - 2] + s[i - 3];
         if(s[i]==0)continue;
