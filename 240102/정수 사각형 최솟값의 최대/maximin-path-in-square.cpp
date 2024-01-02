@@ -27,9 +27,9 @@ int main() {
 
 	dp[0][0] = map[0][0];
 
-	for (int i = 0; i < N; i++) {
-		dp[i][0] = min(dp[i][0], map[i][0]);
-		dp[0][i] = min(dp[0][i], map[0][i]);
+	for (int i = 1; i < N; i++) {
+		dp[i][0] = min(dp[i-1][0], map[i][0]);
+		dp[0][i] = min(dp[0][i-1], map[0][i]);
 	}
 
 	//점화식 적용
