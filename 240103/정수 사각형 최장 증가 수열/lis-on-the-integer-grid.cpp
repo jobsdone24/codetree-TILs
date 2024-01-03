@@ -9,7 +9,7 @@ int dy[] = { 0,1,0,-1 }, dx[] = { 1,0,-1,0 };
 
 int find(int Y, int X) {
 	//만약 값이 정해졌다면
-	if (dp[Y][X] == -1) {
+	if (dp[Y][X] != -1) {
 		return dp[Y][X];
 	}
 	else {
