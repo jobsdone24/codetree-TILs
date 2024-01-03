@@ -8,7 +8,7 @@ int N;
 
 void init() {
 	for (int i = 0; i < N; i++) {
-		dp[i] = INT_MIN;
+		dp[i] =0;
 	}
 	dp[0] = 1;
 }
