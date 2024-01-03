@@ -50,13 +50,27 @@ int main() {
 			if (ls > map[i][j]) ls = map[i][j];
 			int lgap = abs(lb - ls);
 
-			if (ugap <= lgap) {
-				dp[i][j].first = ub;
-				dp[i][j].second = us;
+			//새로 갱신한 값과 기존 값 비교하기
+			int ogap = dp[i][j].first - dp[i][j].second;
+			if (ugap < lgap) {
+				if (ogap != 0 && ogap > ugap) {
+					dp[i][j].first = ub;
+					dp[i][j].second = us;
+				}
+				else if (ogap == 0) {
+					dp[i][j].first = ub;
+					dp[i][j].second = us;
+				}
 			}
 			else {
-				dp[i][j].first = lb;
-				dp[i][j].second = ls;
+				if (ogap != 0 && ogap < ugap) {
+					dp[i][j].first = lb;
+					dp[i][j].second = ls;
+				}
+				else if (ogap == 0) {
+					dp[i][j].first = lb;
+					dp[i][j].second = ls;
+				}
 			}
 		}
 	}
