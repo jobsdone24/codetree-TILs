@@ -3,45 +3,8 @@
 #include<climits>
 using namespace std;
 int number[1004];
-int dp[1004];
+int dp[1004][2]; //뒤의 번호가 0일때 -> 증가하는 경우 1일때 -> 감소하는 경우
 int N;
-
-void init() {
-	for (int i = 0; i < N; i++) {
-		dp[i] = INT_MIN;
-	}
-	dp[0] = 1;
-}
-
-int find(int limits) {
-	init();
-
-	//증가 수열 만들기
-	for (int i = 0; i <= limits; i++) {
-		for (int j = 0; j < i; j++) {
-			if (number[i] > number[j]) {
-				dp[i] = max(dp[i], dp[j] + 1);
-			}
-		}
-		if (dp[i] == INT_MIN) dp[i] = 1;
-	}
-
-	//감소 수열 만들기
-	for (int i = limits + 1; i < N; i++) {
-		for (int j = 0; j < i; j++) {
-			if (number[i] < number[j]) {
-				dp[i] = max(dp[i], dp[j] + 1);
-			}
-		}
-		if (dp[i] == INT_MIN) dp[i] = 1;
-	}
-
-	int big = 0;
-	for (int i = 0; i < N; i++) {
-		if (big < dp[i]) big = dp[i];
-	}
-	return big;
-}
 
 int main() {
 	cin >> N;
@@ -50,9 +13,33 @@ int main() {
 		cin >> number[i];
 	}
 
+	for(int i=0;i<N;i++){
+		//해당 값 처음 시작할 때
+		dp[i][0] = 1;
+		dp[i][1] = 1;
+
+		//case1) 증가하는 경우
+		for(int j=0;j<i;j++){
+			if(number[i]>number[j]){
+				dp[i][0] = max(dp[i][0],dp[j][0]+1);
+			}
+		}
+
+		//case2) 감소하는 경우
+		for(int j=0;j<i;j++){
+			if(number[i]<number[j]){
+				dp[i][1] = max(dp[i][1],dp[j][1]+1);
+			}
+		}
+		//case3) 증가 -> 감소하는 경우
+		dp[i][1] = max(dp[i][1], dp[i][0]);
+	}
 	int ans = 0;
 	for(int i = 0; i < N; i++) {
-		ans = max(ans, find(i));
+		for(int j=0;j<2;j++){
+			ans = max(ans,dp[i][j]);
+		}
 	}
 	cout << ans;
+	return 0;
 }
