@@ -21,6 +21,7 @@ int main() {
 		if (i + time[i] <= n+1) {
 			dp[i] = max(dp[i + 1], dp[i + time[i]] + money[i]);
 		}
+		else dp[i] = dp[i+1];
 	}
 
 	int ans = 0;
