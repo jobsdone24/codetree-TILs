@@ -50,7 +50,7 @@ int main() {
 			if (ls > map[i][j]) ls = map[i][j];
 			int lgap = abs(lb - ls);
 
-			if (ugap < lgap) {
+			if (ugap <= lgap) {
 				dp[i][j].first = ub;
 				dp[i][j].second = us;
 			}
