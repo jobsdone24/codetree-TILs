@@ -33,6 +33,7 @@ int main(){
 			//각각의 경우에 이중 for문 돌리기
 			for (int t = i + 1; t < n; t++) {
 				for (int q = j + 1; q < m; q++) {
+                    if(dp[t][q]==INT_MIN) continue;
 					if (map[i][j] < map[t][q]) {
 						dp[t][q] = max(dp[t][q], dp[i][j] + 1);
 					}
