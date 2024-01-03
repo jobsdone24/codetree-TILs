@@ -1,10 +1,3 @@
-/*
-방법 1 tabulation
-	작은 것 부터 크게 가기
-	key point -> 정렬시키기
-
-*/
-
 #include<iostream>
 #include<algorithm>
 #include<vector>
@@ -12,7 +5,8 @@
 using namespace std;
 
 int N;
-int dp[103][103] = { 0 };
+int dp[503][503] = { 0 };
+int map[503][503] = { 0 };
 void show() {
 	int big = 0;
 	for (int i = 0; i < N; i++) {
@@ -24,7 +18,6 @@ void show() {
 }
 
 int main() {
-	int map[103][103] = { 0 };
 	int dy[] = { 0,1,0,-1 }, dx[] = { 1,0,-1,0 };
 
 	cin >> N;
