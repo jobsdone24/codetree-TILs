@@ -5,9 +5,9 @@ using namespace std;
 int main() {
 	int n;
 	cin >> n;
-	int time[16] = { 0 };
-	int money[16] = { 0 };
-	int dp[16] = { 0 }; // k날짜 까지 일했을 때 벌 수 있는 최대 돈
+	int time[17] = { 0 };
+	int money[17] = { 0 };
+	int dp[17] = { 0 }; // k날짜 까지 일했을 때 벌 수 있는 최대 돈
 
 	for (int i = 1; i <= n; i++) {
 		int t, p;
@@ -24,7 +24,7 @@ int main() {
 	}
 
 	int ans = 0;
-	for (int i = 1; i <= n; i++) {
+	for (int i = 1; i <= n+1; i++) {
 		ans = max(ans, dp[i]);
 	}
 	cout << ans;
