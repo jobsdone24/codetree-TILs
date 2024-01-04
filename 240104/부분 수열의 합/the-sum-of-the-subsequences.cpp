@@ -11,6 +11,8 @@ int main() {
 	cin >> n >> m;
 	for (int i = 1; i <= n; i++) cin >> arr[i];
 	
+	//초기값 설정
+	dp[0][0] = true;
 	for (int i = 1; i <= n; i++) {
 		//i원소를 사용하고 j를 만드는 경우
 
@@ -25,6 +27,7 @@ int main() {
 			}
 		}
 	}
+
 	if (dp[n][m])cout << "Yes";
 	else cout << "No";
 
