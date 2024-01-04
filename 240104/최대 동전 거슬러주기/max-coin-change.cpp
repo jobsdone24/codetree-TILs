@@ -13,7 +13,7 @@ int main() {
 	}
 
 	//table 초기화
-	for (int i = 0; i < M; i++) {
+	for (int i = 0; i <= M; i++) {
 		dp[i] = INT_MIN;
 	}
 	dp[0] = 0;
@@ -29,6 +29,7 @@ int main() {
 			}
 		}
 	}
+	
 	if (dp[M] == INT_MIN) cout << -1;
 	else cout << dp[M];
 }
