@@ -21,7 +21,7 @@ int main() {
 	}
 
 	//값 초기화
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i <= n; i++) {
 		for (int j = 0; j <= m; j++) {
 			dp[i][j] = INT_MIN;
 		}
