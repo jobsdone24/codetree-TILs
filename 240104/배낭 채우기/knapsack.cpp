@@ -35,21 +35,16 @@ int main() {
 			// case 1) i번째 아이템을 선택 해서 j가 되는 경우
 			if (j >= w) {
 				if (dp[i - 1][j - w] == INT_MIN) continue;
-				dp[i][j] = max(dp[i][j], dp[i - 1][j - w] + v);
+				dp[i][j] = max(dp[i-1][j], dp[i - 1][j - w] + v);
 			}
-
-			// case 2) i번째 아이템을 선택하지 않고 j가 되는 경우
-				if (dp[i - 1][j] == INT_MIN) continue;
-				dp[i][j] = max(dp[i][j], dp[i - 1][j]);
+			else dp[i][j] = dp[i - 1][j];
 		}
 	}
 
 	// 최대값 찾기
 	int ans = 0;
-	for (int i = 1; i <= n; i++) {
-		for (int j = 1; j <= m; j++) {
-			ans = max(ans, dp[i][j]);
-		}
+	for (int j = 1; j <= m; j++) {
+		ans = max(ans, dp[n][j]);
 	}
 	cout << ans;
 }
