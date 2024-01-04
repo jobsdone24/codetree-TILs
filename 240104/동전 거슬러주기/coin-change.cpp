@@ -26,6 +26,6 @@ int main(){
             }
         }
     }
-
-    cout << small[M];
+    if(small[M]==INT_MAX) cout << -1;
+    else cout << small[M];
 }
