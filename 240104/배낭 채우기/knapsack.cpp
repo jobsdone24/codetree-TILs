@@ -13,7 +13,7 @@ int main() {
 	int n, m;
 	cin >> n >> m;
 
-	for (int i = 0; i < n; i++) {
+	for (int i = 1; i <= n; i++) {
 		int w, v;
 		cin >> w >> v;
 		weight[i] = w;
@@ -28,7 +28,7 @@ int main() {
 	}
 	dp[0][0] = 0;
 
-	for (int i = 1; i < n; i++) {
+	for (int i = 1; i <= n; i++) {
 		int w = weight[i];
 		int v = value[i];
 		for (int j = 0; j <= m; j++) {
@@ -39,17 +39,15 @@ int main() {
 			}
 
 			// case 2) i번째 아이템을 선택하지 않고 j가 되는 경우
-			if (i - 1 >= 0) {
 				if (dp[i - 1][j] == INT_MIN) continue;
 				dp[i][j] = max(dp[i][j], dp[i - 1][j]);
-			}
 		}
 	}
 
 	// 최대값 찾기
 	int ans = 0;
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j <= m; j++) {
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= m; j++) {
 			ans = max(ans, dp[i][j]);
 		}
 	}
