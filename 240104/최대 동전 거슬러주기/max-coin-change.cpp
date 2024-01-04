@@ -22,7 +22,7 @@ int main() {
 
 	for (int i = 1; i <= M; i++) {
 		for (int j = 1; j <= N; j++) {
-			int c = coin[i];
+			int c = coin[j];
 			if (i>=c) {
 				if (dp[i -c]  == INT_MIN) continue;
 				dp[i] = max(dp[i], dp[i - c] + 1);
