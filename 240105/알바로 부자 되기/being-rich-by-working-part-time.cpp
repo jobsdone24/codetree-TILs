@@ -20,7 +20,7 @@ int main() {
 		dp[i] = arr[i][2]; //i번째 일만 했을 때 벌수 있는 돈
 	}
 
-	for (int i = 1; i <= N; i++) {
+	for (int i = 2; i <= N; i++) {
 		for (int j = 0; j < i; j++) {
 			if (arr[i][0] > arr[i][1]) {
 				dp[i] = max(dp[i], dp[j] + arr[i][2]);
