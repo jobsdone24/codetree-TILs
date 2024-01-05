@@ -20,6 +20,7 @@ int main() {
 		dp[i] = arr[i][2]; //i번째 일만 했을 때 벌수 있는 돈
 	}
 
+	dp[0] = arr[0][2];
 	for (int i = 1; i < N; i++) {
 		for (int j = 0; j < i; j++) {
 			if (arr[i][0] > arr[i][1]) {
@@ -29,7 +30,7 @@ int main() {
 	}
 
 	int ans = 0;
-	for (int i = 1; i <= N; i++) {
+	for (int i = 0; i < N; i++) {
 		ans = max(ans, dp[i]);
 	}
 	cout << ans;
