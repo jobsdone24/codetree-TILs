@@ -7,7 +7,7 @@ using namespace std;
 int dp[MAX_N + 1]; // 마지막으로 고른 알바가 i번째 일때 벌 수 있는 최대 돈
 int N;
 int price;
-int arr[MAX_N][3];
+int arr[MAX_N+1][3];
 
 
 int main() {
