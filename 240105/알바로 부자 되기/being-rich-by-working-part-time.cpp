@@ -23,7 +23,7 @@ int main() {
 	dp[0] = arr[0][2];
 	for (int i = 1; i < N; i++) {
 		for (int j = 0; j < i; j++) {
-			if (arr[i][0] > arr[i][1]) {
+			if (arr[i][0] > arr[j][1]) {
 				dp[i] = max(dp[i], dp[j] + arr[i][2]);
 			}
 		}
