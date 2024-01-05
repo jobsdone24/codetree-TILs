@@ -17,7 +17,7 @@ int main() {
 	}
 
 	//초기값 등록
-	for(int i=0;i<=n;i++){
+	for(int i=0;i<=N;i++){
 		dp[i] = INT_MIN;
 	}
 
