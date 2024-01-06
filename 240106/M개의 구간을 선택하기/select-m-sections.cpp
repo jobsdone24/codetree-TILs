@@ -1,7 +1,7 @@
 #include<iostream>
 #include<climits>
 #define MAX_N 500
-#define MIN_E -50001
+#define MIN_E -1001
 using namespace std;
 
 
@@ -24,11 +24,13 @@ int main() {
 	dp[1][1] = elements[1];
 	
 	for (int i = 2; i <= n; i++) {
-		for (int j = 1; j <= m; j++) {
+		for (int j = 1; j <= (i+1)/2; j++) {
+			//해당 원소를 선택하는 경우
 			dp[i][j] = max(dp[i - 1][j] + elements[i], dp[i - 2][j - 1] + elements[i]);
+			//해당 원소를 선택하지 않는 경우
+			dp[i][j] = max(dp[i][j],dp[i - 1][j]);
 		}
 	}
-
 
 	int ans = INT_MIN;
 	for (int i = 1; i <= n; i++) {
