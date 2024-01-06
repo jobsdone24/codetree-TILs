@@ -1,6 +1,7 @@
 #include<iostream>
 #include<climits>
 #define MAX_N 500
+#define MIN_E -1001
 using namespace std;
 
 
@@ -16,17 +17,18 @@ int main() {
 	//초기값 처리
 	for (int i = 0; i <= n; i++) {
 		for (int j = 0; j <= m; j++) {
-			dp[i][j] = INT_MIN;
+			dp[i][j] = MIN_E;
 		}
 	}
 	dp[0][0] = 0;
 	dp[1][1] = elements[1];
 	
 	for (int i = 2; i <= n; i++) {
-		for (int j = 1; j <= m; j++) {
+		for (int j = 1; j <= (i+1)/2; j++) {
 			dp[i][j] = max(dp[i - 1][j] + elements[i], dp[i - 2][j - 1] + elements[i]);
 		}
 	}
+
 
 	int ans = INT_MIN;
 	for (int i = 1; i <= n; i++) {
