@@ -19,6 +19,7 @@ int main() {
 			dp[i][j] = INT_MIN;
 		}
 	}
+	에[0][0] = 0;
 	dp[1][1] = elements[1];
 	
 	for (int i = 2; i <= n; i++) {
