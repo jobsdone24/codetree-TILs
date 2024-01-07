@@ -31,13 +31,14 @@ int main() {
 		for (int j = 0; j <= m; j++) {
 			//해당 원소를 선택하는 경우
 			//쭉 수열이 이어질 경우, 새로 시작할 경우
-			dp[i][j][1] = max(dp[i - 1][j][1] + elements[i], dp[i-1][j-1][0] + elements[i]);
-
+			if (j - 1 >= 0) {
+				dp[i][j][1] = max(dp[i - 1][j][1] + elements[i], dp[i - 1][j - 1][0] + elements[i]);
+			}
 			//선택하지 않는 경우
-			dp[i][j][0] = max(dp[i-1][j][1], dp[i - 1][j][0]);		
+			dp[i][j][0] = max(dp[i - 1][j][1], dp[i - 1][j][0]);
 		}
 	}
-	
+
 	int ans = max(dp[n][m][0], dp[n][m][1]);
 	cout << ans;
 
