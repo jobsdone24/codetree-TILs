@@ -1,7 +1,7 @@
 #include<iostream>
 #include<climits>
 #define MAX_N 500
-#define MIN_E -50001
+#define MIN_E -500001
 using namespace std;
 
 
