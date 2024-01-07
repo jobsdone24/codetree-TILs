@@ -34,6 +34,8 @@ int main() {
 			if (j - 1 >= 0) {
 				dp[i][j][1] = max(dp[i - 1][j][1] + elements[i], dp[i - 1][j - 1][0] + elements[i]);
 			}
+			else dp[i][j][1]= dp[i-1][j][1] + elements[i];
+
 			//선택하지 않는 경우
 			dp[i][j][0] = max(dp[i - 1][j][1], dp[i - 1][j][0]);
 		}
