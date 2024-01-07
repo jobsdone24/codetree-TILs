@@ -6,7 +6,7 @@ using namespace std;
 
 
 int elements[MAX_N + 1];
-int dp[MAX_N + 1][(MAX_N + 1) / 2][2]; //dp[i][j][k] 마지막으로 i까지 고려했을 때, 지금 k구간 만들고 있으면 0, 구간 만들고있지 않으면 1일때 구간이 j일 때 최대값
+int dp[MAX_N + 1][(MAX_N + 1) / 2+1][2]; //dp[i][j][k] 마지막으로 i까지 고려했을 때, 지금 k구간 만들고 있으면 0, 구간 만들고있지 않으면 1일때 구간이 j일 때 최대값
 int m;
 
 int main() {
@@ -43,5 +43,3 @@ int main() {
 
 	int ans = max(dp[n][m][0], dp[n][m][1]);
 	cout << ans;
-
-}
