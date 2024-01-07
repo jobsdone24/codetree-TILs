@@ -28,7 +28,7 @@ int main() {
 	dp[1][0][0] = 0;
 
 	for (int i = 2; i <= n; i++) {
-		for (int j = 1; j <= m; j++) {
+		for (int j = 0; j <= m; j++) {
 			//해당 원소를 선택하는 경우
 			//쭉 수열이 이어질 경우, 새로 시작할 경우
 			dp[i][j][1] = max(dp[i - 1][j][1] + elements[i], dp[i-1][j-1][0] + elements[i]);
