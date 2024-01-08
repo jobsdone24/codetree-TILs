@@ -23,8 +23,8 @@ int main() {
 			dp[i][j] = 0;
 		}
 	}
-	dp[1][number[1] + OFFSET] = 1;
-	dp[1][-1*number[1] + OFFSET] = 1;
+	dp[1][number[1] + OFFSET]++;
+	dp[1][-1*number[1] + OFFSET]++;
 
 	//점화식 적용
 	for (int i = 2; i <= n; i++) {
