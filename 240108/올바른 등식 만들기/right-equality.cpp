@@ -23,10 +23,10 @@ int main() {
 			dp[i][j + OFFSET] = 0;
 		}
 	}
-	dp[0][0 + OFFSET] = 0;
 	dp[1][number[1] + OFFSET] = 1;
 	dp[1][-number[1] + OFFSET] = 1;
-	//점화식 적용
+	
+    //점화식 적용
 	for (int i = 2; i <= n; i++) {
 		for (int j = -MAX_M; j <= MAX_M; j++) {
 			//만약 범위가 벗어난다면 고려하지 않는다.
