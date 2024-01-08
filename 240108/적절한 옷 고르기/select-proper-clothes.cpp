@@ -40,9 +40,13 @@ int main() {
 			int val = info[j][2];
 			if (i >= start && i <= end) {
 				for (int k = 1; k <= n; k++) {
-					if (dp[i - 1][k] == INT_MIN) continue;
-					dp[i][j] = max(dp[i][j],dp[i - 1][k] + abs(info[k][2]-info[j][2]));
-					
+                    int ks = info[k][0];
+                    int ke = info[k][1];
+                    int kv = info[k][2];
+                    if(i-1>=start && i-1 <=end ){
+					    if (dp[i - 1][k] == INT_MIN) continue;
+					    dp[i][j] = max(dp[i][j],dp[i - 1][k] + abs(info[k][2]-info[j][2]));
+                    }
 				}
 			}
 		}
