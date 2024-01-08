@@ -26,15 +26,15 @@ void findNumCnt() {
     init();
 
     for (int i = 2; i <= n; ++i) {
-        for (int j = 0; j <= MAX_M; ++j) {
+        for (int j = 0; j < MAX_M; ++j) {
             if (dp[i - 1][j] == 0) {
                 continue;
             }
 
-            if (0 <= (j - arr[i]) && (j - arr[i]) <= MAX_M) {
+            if (0 <= (j - arr[i]) && (j - arr[i]) < MAX_M) {
                 dp[i][j - arr[i]] += dp[i - 1][j];
             }
-            if (0 <= (j + arr[i]) && (j + arr[i]) <= MAX_M) {
+            if (0 <= (j + arr[i]) && (j + arr[i]) < MAX_M) {
                 dp[i][j + arr[i]] += dp[i - 1][j];
             }
         }
