@@ -19,8 +19,8 @@ void init() {
 }
 
 void findNumCnt() {
-    init();
-
+    dp[1][arr[1] + 20] =1;
+    dp[1][-arr[1] + 20] =1;
     for (int i = 2; i <= n; ++i) {
         for (int j = 0; j < MAX_M; ++j) {
             if (dp[i - 1][j] == 0) {
