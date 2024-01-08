@@ -19,8 +19,8 @@ int main() {
 	
 	//초기화
 	for (int i = 0; i <= n; i++) {
-		for (int j = -MAX_M; j <= MAX_M; j++) {
-			dp[i][j + OFFSET] = 0;
+		for (int j = 0;j<=40; j++) {
+			dp[i][j] = 0;
 		}
 	}
 	dp[1][number[1] + OFFSET] = 1;
@@ -28,19 +28,19 @@ int main() {
 	
     //점화식 적용
 	for (int i = 2; i <= n; i++) {
-		for (int j = -MAX_M; j <= MAX_M; j++) {
+		for (int j = 0; j <= 40; j++) {
 			//만약 범위가 벗어난다면 고려하지 않는다.
-			if (dp[i - 1][j+ OFFSET] == 0) continue;
+			if (dp[i - 1][j] == 0) continue;
 
 			int num = number[i];
 			// case1) 해당 수를 뻬는 경우
-			if (j - num >= -MAX_M && j - num <= MAX_M) {
-				dp[i][j - num + OFFSET] += dp[i - 1][j+OFFSET];
+			if ((j - num )>= 0 && (j - num) <= 40) {
+				dp[i][j - num] += dp[i - 1][j];
 			}
 
 			// case2) 해당 수를 더하는 경우
-			if (j + num >= -MAX_M && j + num <= MAX_M) {
-				dp[i][j + num + OFFSET] += dp[i - 1][j+OFFSET];
+			if ((j + num) >=0 && (j + num )<= 40) {
+				dp[i][j + num] += dp[i - 1][j];
 			}
 		}
 	}
