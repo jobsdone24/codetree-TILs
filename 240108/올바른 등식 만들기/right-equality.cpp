@@ -1,48 +1,59 @@
-#include<iostream>
-#include<climits>
-#define MAX_N 100
-#define MAX_M 20
-#define OFFSET 20
+#include <iostream>
+#include <cstring>
+
 using namespace std;
 
-long long dp[MAX_N + 1][MAX_M + 1 + OFFSET]; 
-// dp[i][j] --> i번째 까지 고려했을 때 합이 j가 되는 수의 최대 수
-int number[MAX_N + 2];
+const int MAX_N = 101;
+const int MAX_M = 41;
+const int INT_MIN_VAL = -1e9;  // Integer.MIN_VALUE와 유사
+
+int n, m;
+int arr[MAX_N];
+int dp[MAX_N][MAX_M];
+
+void init() {
+    for (int i = 0; i <= n; ++i) {
+        for (int j = 0; j <= MAX_M; ++j) {
+            dp[i][j] = 0;
+        }
+    }
+
+    dp[1][arr[1] + 20]++;
+    dp[1][-1 * arr[1] + 20]++;
+}
+
+void findNumCnt() {
+    init();
+
+    for (int i = 2; i <= n; ++i) {
+        for (int j = 0; j <= MAX_M; ++j) {
+            if (dp[i - 1][j] == 0) {
+                continue;
+            }
+
+            if (0 <= (j - arr[i]) && (j - arr[i]) <= MAX_M) {
+                dp[i][j - arr[i]] += dp[i - 1][j];
+            }
+            if (0 <= (j + arr[i]) && (j + arr[i]) <= MAX_M) {
+                dp[i][j + arr[i]] += dp[i - 1][j];
+            }
+        }
+    }
+}
 
 int main() {
-	int n, m;
-	cin >> n >> m;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-	for (int i = 1; i <= n; i++) {
-		cin >> number[i];
-	}
-	
-	//초기화
-	for (int i = 0; i <= n; i++) {
-		for (int j = 0;j<=41; j++) {
-			dp[i][j] = 0;
-		}
-	}
-	dp[1][number[1] + OFFSET] = 1;
-	dp[1][-number[1] + OFFSET] = 1;
-	
-    //점화식 적용
-	for (int i = 2; i <= n; i++) {
-		for (int j = 0; j <= 41; j++) {
-			//만약 범위가 벗어난다면 고려하지 않는다.
-			if (dp[i - 1][j] == 0) continue;
+    cin >> n >> m;
 
-			int num = number[i];
-			// case1) 해당 수를 뻬는 경우
-			if ((j - num )>= 0 && (j - num) <= 41) {
-				dp[i][j - num] += dp[i - 1][j];
-			}
+    for (int i = 1; i <= n; ++i) {
+        cin >> arr[i];
+    }
 
-			// case2) 해당 수를 더하는 경우
-			if ((j + num) >=0 && (j + num )<= 41) {
-				dp[i][j + num] += dp[i - 1][j];
-			}
-		}
-	}
-	cout << dp[n][m+OFFSET];
+    findNumCnt();
+
+    cout << dp[n][m + 20] << '\n';
+
+    return 0;
 }
