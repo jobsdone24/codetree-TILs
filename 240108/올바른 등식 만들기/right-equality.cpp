@@ -9,7 +9,7 @@ const int INT_MIN_VAL = -1e9;  // Integer.MIN_VALUE와 유사
 
 int n, m;
 int arr[MAX_N];
-int dp[MAX_N][MAX_M];
+long long dp[MAX_N][MAX_M];
 
 void init() {
     for (int i = 0; i <= n; ++i) {
