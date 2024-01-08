@@ -10,19 +10,30 @@ int main() {
 	cin >> a >> b;
 	sn = a.size();
 	sm = b.size();
-
+	int flaga = 0;
+	int flagb = 0;
 	//초기값 설정
-	if (a[0] == b[0])dp[0][0] = 0;
+	if (a[0] == b[0]) {
+		dp[0][0] = 0;
+		flaga = 1;
+		flagb = 1;
+	}
 	else dp[0][0] = 1;
 
 	for (int j = 1; j < sm; j++) {
-		if (a[0] == b[j]) dp[0][j] = dp[0][j - 1];
+		if (a[0] == b[j] && flaga == 0) {
+			dp[0][j] = dp[0][j - 1];
+			flaga = 1;
+		}
 		else dp[0][j] = dp[0][j - 1] + 1;
 	}
 
 	for (int i = 1; i < sn; i++) {
-		if (a[i] == b[0]) dp[i][0] = dp[i-1][0];
-		else dp[i][0] = dp[i-1][0] + 1;
+		if (a[i] == b[0] && flagb == 0) {
+			dp[i][0] = dp[i - 1][0];
+			flagb = 1;
+		}
+		else dp[i][0] = dp[i - 1][0] + 1;
 	}
 
 	for (int i = 1; i < sn; i++) {
