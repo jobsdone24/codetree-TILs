@@ -24,9 +24,9 @@ int main() {
     // N * N 으로 돌면서 확인하기
     for (int i = 0; i < n; i++) {
         int group = 0;
-        for (int j = 0; j < n; j++) {
-            bool flag = false;
+        for (int j = i; j < n; j++) {
             if (wordsize[i] == wordsize[j]) {
+                bool flag = false;
                 for (auto it = word[i].begin(); it != word[i].end(); it++) {
                     char temp = it->first;
                     int cnt = it->second;
@@ -35,8 +35,8 @@ int main() {
                         break;
                     }
                 }
-            }
             if (flag==false) group++;
+            }
         }
         ans = max(ans, group);
     }
