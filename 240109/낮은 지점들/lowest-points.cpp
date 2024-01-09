@@ -16,7 +16,7 @@ int main() {
         else target.insert({x,y});
     }
 
-    int sum=0;
+    long long sum=0;
     for(auto it = target.begin(); it != target.end(); it++){
         sum += it->second;
     }
