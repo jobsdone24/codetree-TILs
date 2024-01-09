@@ -24,6 +24,6 @@ int main() {
             if(check.find(k-num) != check.end()) cnt++;
         }
     }
-    cout << cnt/2;
+    cout << (cnt+1)/2;
     return 0;
 }
