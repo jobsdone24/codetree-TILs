@@ -1,44 +1,25 @@
-#include <iostream>
-#include <unordered_map>
-#include <string>
+#include<iostream>
+#include<unordered_map>
+#include<string>
+#include<algorithm> 
 #define MAX_N 1000
-using namespace std;
 
-int wordsize[MAX_N];
+using namespace std;
 
 int main() {
     int n;
     cin >> n;
-    unordered_map<char, int> word[MAX_N];
+    unordered_map<string, int> word;
     for (int i = 0; i < n; i++) {
         string w;
         cin >> w;
-        
-        wordsize[i] = w.size();
-
-        //단어 개수 확인
-        for (int j = 0; j < w.size(); j++) word[i][w[j]]++;
+        sort(w.begin(),w.end());
+        word[w]++;
     }
 
     int ans = 0;
-    // N * N 으로 돌면서 확인하기
-    for (int i = 0; i < n; i++) {
-        int group = 0;
-        for (int j = i; j < n; j++) {
-            if (wordsize[i] == wordsize[j]) {
-                bool flag = false;
-                for (auto it = word[i].begin(); it != word[i].end(); it++) {
-                    char temp = it->first;
-                    int cnt = it->second;
-                    if (word[j][temp] != cnt) {
-                        flag = true;
-                        break;
-                    }
-                }
-            if (flag==false) group++;
-            }
-        }
-        ans = max(ans, group);
+    for(auto it = word.begin() ; it != word.end(); it++){
+        ans= max(ans,it->second);
     }
     cout << ans;
 
