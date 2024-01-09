@@ -24,7 +24,7 @@ int main() {
     // N * N 으로 돌면서 확인하기
     for (int i = 0; i < n; i++) {
         int group = 0;
-        for (int j = i + 1; j < n; j++) {
+        for (int j = 0; j < n; j++) {
             bool flag = false;
             if (wordsize[i] == wordsize[j]) {
                 for (auto it = word[i].begin(); it != word[i].end(); it++) {
@@ -40,7 +40,7 @@ int main() {
         }
         ans = max(ans, group);
     }
-    cout << ans+1;
+    cout << ans;
 
     return 0;
 }
