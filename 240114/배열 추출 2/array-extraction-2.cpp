@@ -16,16 +16,17 @@ int main() {
 				cout << 0 << "\n";
 				continue;
 			}
-			if(pluspq.empty()){
+			else if(pluspq.empty()){
 				cout << -minuspq.top() << "\n";
 				minuspq.pop();
 				continue;
 			}
-			if (minuspq.empty()) {
+			else if (minuspq.empty()) {
 				cout << -pluspq.top() << "\n";
 				pluspq.pop();
 				continue;
 			}
+            else{
 			int num = -pluspq.top(); //절대값
 			int num2 = -minuspq.top(); //절대값
 			if (num >= num2) {
@@ -36,6 +37,7 @@ int main() {
 				cout << num << "\n";
 				pluspq.pop();
 			}
+            }
 		}
 		else if (x > 0) pluspq.push(-x);
 		else minuspq.push(x);
