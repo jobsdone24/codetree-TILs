@@ -8,7 +8,7 @@ int main() {
 	int N, T;
 	cin >> N >> T;
 	for (int i = 0; i < N; i++) {
-		int x,v;
+		long long x,v;
 		cin >> x >> v;
 		long long target = x + v*T;
 		while(1){
