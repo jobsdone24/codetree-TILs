@@ -31,7 +31,7 @@ int main() {
 				else if(small.size()>big.size()){
 					int num = small.top();
 					small.pop();
-					big.push(middle);
+					big.push(-middle);
 					middle = num;
 				}
 				cout << middle << " ";
