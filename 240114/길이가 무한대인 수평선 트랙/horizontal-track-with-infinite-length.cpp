@@ -51,14 +51,17 @@ int main() {
 		group.erase({ a,b });
 		event_t.erase({ t,a,b });
 
-		//이전 이전에 있는 사람 확인하기
+		//이전 이전에 있는 사람 다음에 있는 사람확인
 		auto iter = group.upper_bound({ a,b });
+		int nx, nv;
+		tie(nx, nv) = *iter;
+
 		if (iter != group.begin()) {
 			iter--;
 			int aa, bb;
 			tie(aa, bb) = *iter;
 			eraseEvent(aa, bb, a, b);
-			addEvent(aa, bb, iter->first, iter->second);
+			addEvent(aa, bb, nx, nv);
 		}
 	}
 	cout << (int)group.size();
