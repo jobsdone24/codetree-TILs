@@ -27,16 +27,24 @@ int main() {
 		if (s.lower_bound(pn) != s.end()) {
 			int temp = *s.lower_bound(pn);
 			int gap = temp - number;
-			if (gap >= m && small > gap) small = gap;
-		}
+			if (gap >= m && small > gap) {
+				small = gap;
+				if (small == m) break;
+			}
 
-		if (s.lower_bound(mn) != s.end()) {
-			if (s.lower_bound(mn) != s.begin()) {
-				auto iter = s.lower_bound(mn);
-				iter--;
-				int temp = *iter;
-				int gap = number - temp;
-				if (gap >= m && small > gap) small = gap;
+			auto iter = s.lower_bound(mn);
+			if (iter != s.end()) {
+				//차이가 m일 경우 break;
+				if (iter == s.find(mn)) {
+					small = m;
+					break;
+				}
+				else if (iter != s.begin()) {
+					iter--;
+					int temp = *iter;
+					int gap = number - temp;
+					if (gap >= m && small > gap) small = gap;
+				}
 			}
 		}
 	}
