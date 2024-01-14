@@ -17,7 +17,7 @@ int main() {
 				continue;
 			}
 			else if(pluspq.empty()){
-				cout << -minuspq.top() << "\n";
+				cout << minuspq.top() << "\n";
 				minuspq.pop();
 				continue;
 			}
