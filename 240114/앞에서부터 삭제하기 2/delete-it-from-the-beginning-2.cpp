@@ -40,6 +40,7 @@ int main() {
 				thap -= tmp;
 				double solv = 1.0 * thap / (n - i - 2);
 				if (solv > big) big = solv;
+				pq.push(-tmp);
 				break;
 			}
 		}
