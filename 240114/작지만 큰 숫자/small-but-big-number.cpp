@@ -17,7 +17,14 @@ int main() {
 		int num;
 		cin >> num;
 		auto iter = s.upper_bound(num);
-		if (iter == s.end() || iter == s.begin()) {
+		
+		if (iter ==s.end() && s.size()>0) {
+			iter--;
+			cout << *iter << "\n";
+			s.erase(*iter);
+		
+		}
+		else if (iter == s.end() || iter == s.begin()) {
 			cout << -1 << "\n";
 		}
 		else {
