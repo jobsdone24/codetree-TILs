@@ -48,6 +48,7 @@ int main() {
 			}
 		}
 	}
-	cout << small;
+	if(small == INT_MAX) cout << -1;
+	else cout << small;
 	return 0;
 }
