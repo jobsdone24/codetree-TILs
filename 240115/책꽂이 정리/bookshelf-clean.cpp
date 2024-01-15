@@ -130,7 +130,7 @@ int main() {
 			}
 		}
 		else if (order == 3) {
-			if (a == b || BookCnt[a]==0) continue;
+			if (a == b) continue;
 			else {
 				Node* st = Head[b];
 				Node* et = Head[b]->nxt;
@@ -140,7 +140,7 @@ int main() {
 			}
 		}
 		else if (order == 4) {
-			if (a == b|| BookCnt[a]==0) continue;
+			if (a == b) continue;
 			else {
 				Node* st = Tail[b]->prev;
 				Node* et = Tail[b];
