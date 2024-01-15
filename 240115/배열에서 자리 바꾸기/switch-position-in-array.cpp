@@ -80,7 +80,7 @@ int main() {
 		info[i] = newnode;
 		AddNode(newnode);
 	}
-
+	
 	int Q;
 	cin >> Q;
 	for (int i = 0; i < Q; i++) {
@@ -94,6 +94,10 @@ int main() {
 		if (ef->nxt == ss) {
 			pair<Node*, Node*> first = CutNode(sf, ef);
 			ChangeNode(sf, ef, es, es->nxt);
+		}
+		else if (es->nxt == sf) {
+			pair<Node*, Node*> second = CutNode(ss, es);
+			ChangeNode(ss, es, ef, ef->nxt);
 		}
 		//한칸 이상 띄어져 있을 경우
 		else {
