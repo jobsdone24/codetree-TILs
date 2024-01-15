@@ -9,7 +9,7 @@ typedef struct Node {
 	Node* nxt;
 };
 
-Node node[MAX_N + 15];
+Node node[MAX_N + 1000];
 Node* Head[MAX_K+1];
 Node* Tail[MAX_K+1];
 int nodecnt;
@@ -109,7 +109,7 @@ int main() {
 		cin >> order >> a >> b;
 		if (order == 1) {
 			//책 유무 확인
-			if (Head[a]->nxt == Tail[a]) continue;
+			if (BookCnt[a]==0) continue;
 			else {
 				Node* cur = Head[a]->nxt;
 				DeleteNode(cur);
@@ -120,7 +120,7 @@ int main() {
 		}
 		else if (order == 2) {
 			//책 유무 확인
-			if (Head[a]->nxt == Tail[a]) continue;
+			if (BookCnt[a] == 0) continue;
 			else {
 				Node* cur = Tail[a]->prev;
 				DeleteNode(cur);
@@ -130,7 +130,7 @@ int main() {
 			}
 		}
 		else if (order == 3) {
-			if (a == b);
+			if (a == b || BookCnt[a]==0) continue;
 			else {
 				Node* st = Head[b];
 				Node* et = Head[b]->nxt;
@@ -140,7 +140,7 @@ int main() {
 			}
 		}
 		else if (order == 4) {
-			if (a == b);
+			if (a == b|| BookCnt[a]==0) continue;
 			else {
 				Node* st = Tail[b]->prev;
 				Node* et = Tail[b];
