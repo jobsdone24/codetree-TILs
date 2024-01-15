@@ -53,7 +53,7 @@ void PushBack(Node* n) {
 
 int main() {
     ios_base::sync_with_stdio(false);
-    cin.tie(null);
+    cin.tie(NULL);
 	string s_init;
 	cin >> s_init;
 	int N;
