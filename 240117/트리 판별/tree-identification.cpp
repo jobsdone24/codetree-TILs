@@ -7,11 +7,14 @@ using namespace std;
 vector<int> edge[MAX_N + 1];
 bool visited[MAX_N + 1];
 bool gameover;
-int parent[MAX_N + 1];
-int cnt;
+
+int root = 0;
+bool nodecnt[MAX_N + 1]; //노드의 개수를 새기
+int totalcnt; //총 노드 개수
+int deg[MAX_N + 1];
+
 
 void Traversal(int num) {
-	cnt++;
 	if (gameover)return;
 	for (int i = 0; i < (int)edge[num].size(); i++) {
 		int next = edge[num][i]; // 부모 num, 자식 next
@@ -26,49 +29,33 @@ void Traversal(int num) {
 	}
 }
 
-bool nodecnt[MAX_N + 1]; //노드의 개수를 새기
-int totalcnt; //총 노드 개수
-
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 	int m;
 	cin >> m;
-	int last=0;
+
 	for (int i = 0; i < m; i++) {
 		int a, b;
 		cin >> a >> b;
 		edge[a].push_back(b);
-		parent[b] = a;
-		last = b;
-		if (nodecnt[a] == false) {
-			nodecnt[a] = true;
-			totalcnt++;
-		}
-		if (nodecnt[b] == false) {
-			nodecnt[b] = true;
-			totalcnt++;
+		nodecnt[a] = nodecnt[b] = true;
+		deg[b]++;
+	}
+
+	//루트가 여러개인 경우
+	for (int i = 1; i <= MAX_N; i++) {
+		if (nodecnt[i] && deg[i] == 0) {
+			if(root ==0) root = i;
+			else {
+				gameover = true;
+				break;
+			}
 		}
 	}
 
-
-	int root = 0;
-	int check[MAX_N + 1] = { 0 };
-	// 루트 노드 찾기
-	while (1) {
-		check[last] = true;
-		int p = parent[last];
-		
-		if (p == 0) {
-			root = last;
-			break;
-		}
-		if (check[p]) {
-			gameover = true;
-			break;
-		}
-		last = p;
-	}
+	//루트가 없는 경우
+	if (root == 0) gameover = true;
 
 	if (gameover == true)cout << 0;
 	else {
@@ -76,7 +63,7 @@ int main() {
 		visited[root] = true;
 		Traversal(root);
 
-		if (gameover == true || cnt != totalcnt )cout << 0;
+		if (gameover == true )cout << 0;
 		else cout << 1;
 	}
 }
