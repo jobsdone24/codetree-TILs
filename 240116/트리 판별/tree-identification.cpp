@@ -19,9 +19,10 @@ void Traversal(int num) {
 		}
 		else {
 			gameover = true;
-			return;
+			break;
 		}
 	}
+	return;
 }
 
 int main() {
