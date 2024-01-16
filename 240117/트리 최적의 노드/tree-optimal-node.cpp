@@ -26,10 +26,10 @@ int main() {
 	int n;
 	cin >> n;
 	for (int i = 0; i < n-1; i++) {
-		int a, b,length;
-		cin >> a >> b>>length;
-		tree[a].push_back({ b,length });
-		tree[b].push_back({ a, length });
+		int a, b;
+		cin >> a >> b;
+		tree[a].push_back({ b,1 });
+		tree[b].push_back({ a,1 });
 	}
 
 	//1번 노드에서 거리구하기
