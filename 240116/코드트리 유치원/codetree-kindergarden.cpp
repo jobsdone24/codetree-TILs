@@ -28,9 +28,18 @@ Node* getNode(int arr) {
 	return &node[nodecnt++];
 };
 
+void AddNode(Node* start,Node* ns, Node* ne) {
+	Node* st = start;
+	Node* ed = start->next;
+    ns->prev = st;
+    ne->next = ed;
+    st->next = ns;
+    ed->prev = ne;
+}
+
 void Init() {
 	nodecnt = 0;
-
+    cnt = 0;
 	//이중 연결리스트
 	Head = getNode(-1);
 	Tail = getNode(-1);
@@ -39,25 +48,16 @@ void Init() {
 
 	//1번학생 집어넣기
 	Node* first = getNode(++cnt);
-	AddNode(Tail->prev,first);
+	AddNode(Tail->prev,first,first);
 }
 
-void AddNode(Node* start,Node* newnode) {
-	Node* st = start;
-	Node* ed = start->next;
-	newnode->next = ed;
-	newnode->prev = st;
-	st->next = newnode;
-	ed->prev = newnode;
-}
-
-void AddFrontNode(Node* target, Node* newnode) {
+void AddFrontNode(Node* target, Node* ns, Node* ne) {
 	Node* st = target->prev;
 	Node* ed = target;
-	newnode->next = ed;
-	newnode->prev = st;
-	st->next = newnode;
-	ed->prev = newnode;
+    ns->prev = st;
+    ne->next = ed;
+    st->next = ns;
+    ed->prev = ne;
 }
 
 
@@ -68,6 +68,18 @@ void DeleteNode(Node* dnode) {
 	prev->next = next;
 	dnode->next = nullptr;
 	dnode->prev = nullptr;
+}
+pair<Node*, Node*> Makeline(int b){
+    //초기값 등록
+    Node* start = getNode(++cnt);
+    Node* cur = start;
+    for (int j = 1; j < b; j++) {
+			Node* newnode = getNode(++cnt);
+            cur->next = newnode;
+            newnode->prev = cur;
+            cur = cur->next;
+    }
+    return {start, cur};
 }
 
 int main() {
@@ -83,27 +95,15 @@ int main() {
 			int a, b;
 			cin >> a >> b;
 			// b명의 학생 줄 세우기
-
-			Node* start;
-			Node* end;
-
-			for (int j = 0; j < b; j++) {
-				Node* newnode = getNode(++cnt);
-				if (j == 0) start = newnode;
-				if (j == b - 1) end = newnode;
-				
-				AddNode(target, newnode);
-			}
-		}
+            pair<Node*, Node*> line = Makeline(b);
+            AddNode(info[a],line.first, line.second);
+        }
 		else if (num == 2) {
 			int a, b;
 			cin >> a >> b;
 			// b명의 학생 줄 세우기
-			for (int j = 0; j < b; j++) {
-				Node* newnode = getNode(++cnt);
-				Node* target = info[a];
-				AddFrontNode(target, newnode);
-			}
+			pair<Node*, Node*> line = Makeline(b);
+            AddFrontNode(info[a],line.first, line.second);
 		}
 		else if (num == 3) {
 			int a;
