@@ -8,13 +8,20 @@ using namespace std;
 
 vector<pair<int,int> > tree[MAX_N + 1];
 bool visited[MAX_N + 1];
-
+int small = INT_MAX;
 pair<int, int> big = { 0,0 };
+
+bool gameover;
 void Traversal(int num,int worth) {
-	for (int i = 0; i < (int)tree[num].size(); i++) {
+    if(gameover) return;
+    if(big.first>=small){
+        gameover = true;
+        return;
+    }	
+    for (int i = 0; i < (int)tree[num].size(); i++) {
 		//특정 점에서 num을 지날때의 길이는 worth이다.
 		if (big.first < worth)big = { worth,num };
-		int next, dist;
+        int next, dist;
 		tie(next,dist) = tree[num][i]; // 부모 num, 자식 next
 		if (visited[next] == false) {
 			visited[next] = true;
@@ -32,9 +39,8 @@ int main() {
 		tree[a].push_back({ b,1 });
 		tree[b].push_back({ a,1 });
 	}
-
-	int small = INT_MAX;
 	for(int i=1;i<=n;i++){
+        gameover = false;
 		big ={0,0};
 		visited[i] = true;
 		Traversal(i, 0);
