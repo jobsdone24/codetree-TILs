@@ -2,7 +2,7 @@
 #include<vector>
 #include<tuple>
 #include<string.h>
-#define MAX_N 10000
+#define MAX_N 100000
 using namespace std;
 
 vector<pair<int,int> > tree[MAX_N + 1];
