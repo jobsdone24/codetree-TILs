@@ -25,6 +25,8 @@ void Traversal(int num) {
 }
 
 int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 	int m;
 	cin >> m;
 	int last;
