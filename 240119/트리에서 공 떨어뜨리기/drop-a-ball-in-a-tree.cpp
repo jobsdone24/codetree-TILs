@@ -6,18 +6,18 @@ int lnode[MAX_N + 1];
 int rnode[MAX_N + 1];
 int ans;
 
-void DFS(int x, long long num) {
-	if (lnode[x] == -1 && rnode[x] == -1) {
-		ans = x;
+void dfs(int node, long long ball){
+	if(lnode[node]==-1 && rnode[node] ==-1){
+		ans = node;
 		return;
 	}
+	if(lnode[node]==-1) dfs(rnode[node], ball);
+	else if(rnode[node]==-1) dfs(lnode[node],ball);
+	else if(ball%2==0) dfs(rnode[node],ball/2);
+	else dfs(lnode[node],(ball+1)/2);
 
-	if (lnode[x] == -1) DFS(rnode[x], num);
-	else if (rnode[x] == -1) DFS(lnode[x], num);
-	else if (num % 2 == 0) DFS(rnode[x], num / 2);
-	else DFS(lnode[x], (num) / 2);
+
 }
-
 int main() {
 	int n;
 	cin >> n;
@@ -26,6 +26,6 @@ int main() {
 	}
 	long long k;
 	cin >> k;
-	DFS(1, k);
+	dfs(1,k);
 	cout << ans;
 }
