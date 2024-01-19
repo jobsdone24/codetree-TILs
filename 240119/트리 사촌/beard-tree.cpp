@@ -41,8 +41,8 @@ int main() {
 			int si = i;
 			while (node[si] + 1 == node[si + 1]) {
 				edge[par].push_back(si);
-				si++;
 				parent[si] = par;
+                si++;
 			}
 			edge[par].push_back(si);
 			parent[si] = par;
