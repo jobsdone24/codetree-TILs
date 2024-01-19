@@ -1,12 +1,22 @@
 #include<iostream>
 #include<unordered_set>
+#include<stack>
 using namespace std;
 unordered_set<int> s;
 int test(int x) {
+	stack<int> st;
 	int num = x;
-	while (num != 1) {
+	st.push(num);
+	while (num > 1) {
 		num /= 2;
-		if (s.find(num) != s.end()) return num;
+		st.push(num);
+	}
+	
+	//stack에서 빼내기
+	while (!st.empty()) {
+		int n = st.top();
+		st.pop();
+		if (s.find(n) != s.end()) return n;
 	}
 	return 0;
 }
