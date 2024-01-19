@@ -11,7 +11,7 @@ int main() {
 	for (int i = 1; i <= n; i++) {
 		cin >> lnode[i] >> rnode[i];
 	}
-	int k;
+	long long k;
 	cin >> k;
 	int cur = 1;
 	while (1) {
