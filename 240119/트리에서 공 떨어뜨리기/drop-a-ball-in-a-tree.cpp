@@ -15,7 +15,7 @@ void DFS(int x, long long num) {
 	if (lnode[x] == -1) DFS(rnode[x], num);
 	else if (rnode[x] == -1) DFS(lnode[x], num);
 	else if (num % 2 == 0) DFS(rnode[x], num / 2);
-	else DFS(lnode[x], (num+1) / 2);
+	else DFS(lnode[x], (num) / 2);
 }
 
 int main() {
