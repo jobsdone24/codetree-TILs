@@ -4,6 +4,19 @@ using namespace std;
 
 int lnode[MAX_N + 1];
 int rnode[MAX_N + 1];
+int ans;
+
+void DFS(int x, int num) {
+	if (lnode[x] == -1 && rnode[x] == -1) {
+		ans = x;
+		return;
+	}
+
+	if (lnode[x] == -1) DFS(rnode[x], num);
+	else if (rnode[x] == -1) DFS(lnode[x], num);
+	else if (num % 2 == 0) DFS(rnode[x], num / 2);
+	else DFS(lnode[x], num / 2);
+}
 
 int main() {
 	int n;
@@ -13,21 +26,6 @@ int main() {
 	}
 	int k;
 	cin >> k;
-	int cur = 1;
-	while (k) {
-		// 리프노드인 경우
-		if (lnode[cur] == -1 && rnode[cur] == -1) {
-			cout << cur;
-			break;
-		}
-		else if (lnode[cur] == -1) cur = cur * 2 + 1;
-		else if (rnode[cur] == -1)cur = cur * 2;
-		else {
-			//두개 다 있는 경우
-			if (k % 2 == 0)cur = cur * 2 + 1;
-			else cur = cur * 2;
-
-			k /= 2;
-		}
-	}
+	DFS(1, k);
+	cout << ans;
 }
