@@ -1,9 +1,10 @@
 #include<iostream>
+#include<unordered_map>
 #define MAX_N 10'000
 using namespace std;
 
-int lnode[MAX_N + 1];
-int rnode[MAX_N + 1];
+unordered_map<int, int> lnode;
+unordered_map<int, int> rnode;
 int n;
 int a[MAX_N + 1];
 
@@ -24,7 +25,7 @@ void check(int start, int end) {
 			rnode[a[start]] = a[i];
 			//작은 것
 			check(start + 1, i - 1);
-			if(start+1 <=i-1) lnode[a[start]] = a[start + 1];
+			if (start + 1 <= i - 1) lnode[a[start]] = a[start + 1];
 			flag = true;
 			return;
 		}
