@@ -1,11 +1,12 @@
 #include<iostream>
 #include<vector>
+#include<unordered_map> 
 #define MAX_N 1000
 using namespace std;
 
 vector<int> edge[MAX_N+1];
 int node[MAX_N + 1];
-int d[MAX_N + 1];
+unordered_map<int,int> d;
 int depthcnt[11];
 
 bool visited[MAX_N + 1];
