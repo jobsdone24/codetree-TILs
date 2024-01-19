@@ -4,21 +4,15 @@
 using namespace std;
 unordered_set<int> s;
 int test(int x) {
-	stack<int> st;
-	int num = x;
-	st.push(num);
-	while (num > 1) {
-		num /= 2;
-		st.push(num);
-	}
-	
-	//stack에서 빼내기
-	while (!st.empty()) {
-		int n = st.top();
-		st.pop();
-		if (s.find(n) != s.end()) return n;
-	}
-	return 0;
+	int ret = 0;
+    while(x){
+        if(s.find(x) !=s.end()){
+            ret = x;
+        }
+        x /=2;
+
+    }
+    return ret;
 }
 int main() {
 	int n, q;
@@ -28,7 +22,7 @@ int main() {
 		int num;
 		cin >> num;
 		int t = test(num);
-		if (t == 0) s.insert(num);
+        if(t==0)s.insert(num);
 		cout << t<<'\n';
 	}
 }
