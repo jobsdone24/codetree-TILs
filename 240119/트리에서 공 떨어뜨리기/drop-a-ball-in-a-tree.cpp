@@ -23,9 +23,14 @@ int main() {
 		else if (lnode[cur] == -1) cur = rnode[cur];
 		else if (rnode[cur] == -1)cur = lnode[cur];
 		else {
-			if (k % 2 == 0)cur = rnode[cur];
-			else cur = lnode[cur];
-			k = (k + 1) / 2;
+			if (k % 2 == 0){
+				cur = rnode[cur];
+				k /=2;
+			}
+			else{
+				cur = lnode[cur];
+				k = (k + 1) / 2;
+			}
 		}
 	}
 }
