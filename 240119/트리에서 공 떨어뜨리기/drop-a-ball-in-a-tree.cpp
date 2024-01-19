@@ -14,8 +14,8 @@ int main() {
 	long long k;
 	cin >> k;
 	int cur = 1;
-	while (1) {
-		// 리프노드인 경우 (정답)
+	while (k) {
+		// 리프노드인 경우
 		if (lnode[cur] == -1 && rnode[cur] == -1) {
 			cout << cur;
 			break;
@@ -23,14 +23,11 @@ int main() {
 		else if (lnode[cur] == -1) cur = rnode[cur];
 		else if (rnode[cur] == -1)cur = lnode[cur];
 		else {
-			if (k % 2 == 0){
-				cur = rnode[cur];
-				k /=2;
-			}
-			else{
-				cur = lnode[cur];
-				k = (k + 1) / 2;
-			}
+			//두개 다 있는 경우
+			if (k % 2 == 0)cur = rnode[cur];
+			else cur = lnode[cur];
+
+			k = (k+1)/2;
 		}
 	}
 }
