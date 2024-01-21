@@ -48,7 +48,7 @@ int main() {
         int small = a + b - big;
 
         for (int h = MAX_H; h >= 0; h--) {
-            if (depth[big] - depth[small] >= (1 << h)) big = depth[big];
+            if (depth[big] - depth[small] >= (1 << h)) big = parent[h][big];
         }
 
         //step 2
