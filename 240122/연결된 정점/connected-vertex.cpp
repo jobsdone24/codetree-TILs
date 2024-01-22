@@ -38,7 +38,7 @@ int main() {
 		}
 		else {
 			cin >> a;
-			cout << ufcnt[Find(a)]<<"\n";
+			cout << ufcnt[uf[a]]<<"\n";
 		}
 	}
 }
