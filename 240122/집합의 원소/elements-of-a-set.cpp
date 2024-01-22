@@ -14,7 +14,6 @@ int Find(int x) {
 void Union(int x, int y) {
 	int X = Find(x);
 	int Y = Find(y);
-    if(X==Y)return;
 	uf[X] = Y;
 }
 
