@@ -6,10 +6,7 @@ int uf[MAX_N + 1];
 int ufcnt[MAX_N+1];
 
 int Find(int x){
-	if(uf[x] == x){
-		ufcnt[x]++;
-		return x;
-	}
+	if(uf[x] == x)return x;
 	int root = Find(uf[x]);
 	uf[x] = root;
 	return root;
@@ -18,16 +15,24 @@ int Find(int x){
 void Union(int x, int y){
 	int X = Find(x);
 	int Y = Find(y);
-	uf[X] = Y;
+	if(X != Y){
+	 uf[X] = Y;
+	 ufcnt[Y] += ufcnt[X]; 
+	}
 }
+
+//집합을 나누고 각 집합에 몇개나 포함되어 있는지 확인하기
+
 
 int main() {
 	int n, m;
 	cin >> n >> m;
 
 	//초기화 해주기
-	for (int i = 1; i <= n; i++) uf[i] = i;
-
+	for (int i = 1; i <= n; i++){
+		uf[i] = i;
+		ufcnt[i] = 1;
+	}
 	for (int i = 0; i < m; i++) {
 		char order;
 		int a, b;
@@ -38,7 +43,7 @@ int main() {
 		}
 		else {
 			cin >> a;
-			cout << ufcnt[uf[a]]<<"\n";
+			cout << ufcnt[Find(a)]<<"\n";
 		}
 	}
 }
