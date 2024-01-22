@@ -41,15 +41,17 @@ int main() {
     for (int i = 1; i <= n; i++) uf[i] = i;
 
     int hap = 0;
+    int cnt = 0;
     for (int i = 0; i < m; i++) {
         int w, f, s;
         tie(w, f, s) = edge[i];
         if (team[f] == team[s])continue;
         if (Find(f) != Find(s)) {
+            cnt++;
             Union(f, s);
             hap += w;
         }
     }
-    if (hap == 0)hap = -1;
-    cout << hap;
+    if(cnt != n-1) cout << -1;
+    else cout << hap;
 }
