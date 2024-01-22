@@ -36,7 +36,7 @@ int main() {
     //가중치 만들기
     for (int i = 1; i <= n; i++) {
         for (int j = i + 1; j <= n; j++) {
-            int x1, x2, y1, y2;
+            long long x1, x2, y1, y2;
             tie(x1, y1) = dot[i];
             tie(x2, y2) = dot[j];
             double w = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
