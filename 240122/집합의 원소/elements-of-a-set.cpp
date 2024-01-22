@@ -32,7 +32,7 @@ int main() {
 			Union(a, b);
 		}
 		else {
-			if (uf[a] == uf[b])cout << 1 << "\n";
+			if (Find(a) == Find(b))cout << 1 << "\n";
 			else cout << 0 << "\n";
 		}
 	}
