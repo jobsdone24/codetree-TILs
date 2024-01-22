@@ -56,7 +56,8 @@ int main() {
 
     double hap = 0;
     for (int i = 0; i < size; i++) {
-        int w, f, s;
+        double w;
+        int f, s;
         tie(w, f, s) = edge[i];
         if (Find(f) != Find(s)) {
             Union(f, s);
