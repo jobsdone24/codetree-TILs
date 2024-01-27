@@ -5,11 +5,10 @@ using namespace std;
 
 long long m;
 long long BinarySearch(long long target) {
-	long long left = 0;
-	long long right = m-1;
+	long long left = 1;
+	long long right = m;
 	long long mid = 0;
 	long long cnt = 0;
-    target--;
 
 	while (left <= right) {
 		cnt++;
