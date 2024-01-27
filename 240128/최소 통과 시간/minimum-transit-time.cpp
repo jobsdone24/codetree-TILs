@@ -1,12 +1,12 @@
 #include<iostream>
 #define MAX_N 100'000
 using namespace std;
-
-int n, m;
+typedef long long ll;
+ll n, m;
 int arr[MAX_N + 1];
 
-bool IsPossible(int x) {
-	int cnt = 0;
+bool IsPossible(ll x) {
+	ll cnt = 0;
 	for (int i = 0; i < m; i++) {
 		cnt += x/arr[i];
     }
@@ -19,11 +19,11 @@ int main() {
 	cin >> n >> m;
 	for (int i = 0; i < m; i++) cin >> arr[i];
 
-	int lo = 1;
-	int hi = 1e9;
-	int dap = 1e9;
+	ll lo = 1;
+    ll hi = 1e14;
+	ll dap = 1e14;
 	while (lo <= hi) {
-		int mid = (lo + hi) / 2;
+		ll mid = (lo + hi) / 2;
 		if (IsPossible(mid)) {
 			hi = mid - 1;
 			dap = min(dap, mid);
