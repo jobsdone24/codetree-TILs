@@ -4,34 +4,25 @@ using namespace std;
 int n;
 
 bool IsPossible(int target) {
-	int cnt = 0;
-	for (int i = 1; i <= target; i++) {
-		if (i % 3 == 0 || i % 5==0) continue;
-		else cnt++;
-		
-		if (cnt > n-1) return false;
-    }
-
-    //cnt수가 n-1인것
-	return true;
+	int cnt = target/3 + target/5 - target/15;
+    if(target-cnt >=n) return true;
+	return false;
 }
 
 int main() {
 	cin >> n;
 	int left = 1;
 	int right = 1e9;
-	int dap = 0;
+	int dap = 1e9;
 	while (left <= right) {
 		int mid = (left + right) / 2;
-		if (IsPossible(mid)==false) right = mid - 1;
-		else{
-            left = mid + 1;
-            dap = max(dap,mid);
+		if (IsPossible(mid)){
+            right = mid - 1;
+            dap = min(dap,mid);
+        }
+        else{
+            left = mid +1;
 		}
 	}
-    for(int i=dap+1; ;i++){
-        if(i%3 ==0 || i%5==0)continue;
-        cout <<i;
-        break;
-    }
+    cout << dap;
 }
