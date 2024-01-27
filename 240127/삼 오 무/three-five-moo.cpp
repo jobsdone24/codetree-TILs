@@ -18,14 +18,14 @@ int main() {
 	cin >> n;
 	int left = 1;
 	int right = 1e9;
-	int dap = 1e9;
+	int dap = 0;
 	while (left <= right) {
 		int mid = (left + right) / 2;
 		int num = IsPossible(mid);
 		if (num == 1) right = mid - 1;
 		else{
             left = mid + 1;
-            dap = min(dap,mid);
+            dap =max(dap,mid);
 		}
 	}
 	cout << dap;
