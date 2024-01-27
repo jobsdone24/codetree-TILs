@@ -15,7 +15,7 @@ int main() {
 	for (int i = 1; i <= 1e9; i++) {
 		if (i % 3 == 0 || i % 5 == 0)continue;
 		cnt++;
-        if(cnt==4){
+        if(cnt==n){
             cout <<i;
             break;
     }
