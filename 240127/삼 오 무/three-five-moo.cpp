@@ -1,19 +1,19 @@
 #include<iostream>
 using namespace std;
 
-int n;
+long long n;
 
-bool IsPossible(int target) {
-	int cnt = target/3 + target/5 - target/15;
+bool IsPossible(long long target) {
+	long long cnt = target/3 + target/5 - target/15;
     if(target-cnt >=n) return true;
 	return false;
 }
 
 int main() {
 	cin >> n;
-	int left = 1;
-	int right = 1e9;
-	int dap = 2*1e9;
+	long long left = 1;
+	long long right = INT_MAX;
+	long long dap = INT_MAX;
 	while (left <= right) {
 		int mid = (left + right) / 2;
 		if (IsPossible(mid)){
