@@ -9,10 +9,10 @@ int BinarySearch(int target) {
 	long long mid = 0;
 	int cnt = 0;
     target--;
-    
+
 	while (left <= right) {
 		cnt++;
-        mid = (left + right) / 2;
+        mid = (left + right+1) / 2;
 		if (mid < target) {
 			left = mid + 1;
 		}
