@@ -11,7 +11,7 @@ int BinarySearch(int target) {
 
 	while (left <= right) {
 		cnt++;
-        mid = (left + right) / 2;
+        mid = (left + right+1) / 2;
 		if (mid < target) {
 			left = mid + 1;
 		}
