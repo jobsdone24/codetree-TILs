@@ -1,9 +1,10 @@
 #include<iostream>
 #include<climits>
+#include<cmath>
 using namespace std;
 
 long long m;
-int BinarySearch(int target) {
+long long BinarySearch(int target) {
 	long long left = 0;
 	long long right = m-1;
 	long long mid = 0;
@@ -12,7 +13,7 @@ int BinarySearch(int target) {
 
 	while (left <= right) {
 		cnt++;
-        mid = (left + right+1) / 2;
+        mid = (left + right) / 2;
 		if (mid < target) {
 			left = mid + 1;
 		}
@@ -30,10 +31,10 @@ int main() {
 
 	long long a, b;
 	cin >> m >> a >> b;
-	int small = INT_MAX;
-	int big = INT_MIN;
+	long long small = LLONG_MAX;
+	long long big = 0;
 	for (int i = a; i <= b; i++) {
-		int num = BinarySearch(i);
+		long long num = BinarySearch(i);
 		small = min(small, num);
 		big = max(big, num);
 	}
