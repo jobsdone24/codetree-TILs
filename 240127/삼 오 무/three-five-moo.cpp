@@ -16,7 +16,7 @@ int main() {
 	long long right = INT_MAX;
 	long long dap = INT_MAX;
 	while (left <= right) {
-		int mid = (left + right) / 2;
+		long long mid = (left + right) / 2;
 		if (IsPossible(mid)){
             right = mid - 1;
             dap = min(dap,mid);
