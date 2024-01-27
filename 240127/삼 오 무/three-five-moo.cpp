@@ -11,21 +11,21 @@ int IsPossible(int target) {
 		
 		if (cnt > n) return 1;
 	}
-	if (cnt < n)return 2;
+	if (cnt <= n)return 2;
 }
 
 int main() {
 	cin >> n;
 	int left = 1;
 	int right = 1e9;
-	int dap = 0;
+	int dap = 1e9;
 	while (left <= right) {
 		int mid = (left + right) / 2;
 		int num = IsPossible(mid);
 		if (num == 1) right = mid - 1;
 		else{
             left = mid + 1;
-            dap =max(dap,mid);
+            dap = min(dap,mid);
 		}
 	}
 	cout << dap;
