@@ -13,7 +13,7 @@ int main() {
 	cin >> n;
 	int left = 1;
 	int right = 1e9;
-	int dap = 1e9;
+	int dap = 2*1e9;
 	while (left <= right) {
 		int mid = (left + right) / 2;
 		if (IsPossible(mid)){
