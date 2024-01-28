@@ -9,28 +9,18 @@ int arr[MAX_N + 1];
 
 bool ispossible(int dist) {
 	//dist의 거리를 가지고 다 터트릴 수 있는지 확인하기
-	int start = 0;
-	int bus = 0;
-    int buscnt=0;
-	for (int i = 0; i < N; i++) {
-		if (start == 0){
+	int start = arr[0];
+	int bus = 1;
+    int buscnt=1;
+	for (int i = 1; i < N; i++) {
+        if (arr[i] - start > dist ||buscnt > C){
             bus++;
             start = arr[i];
+            buscnt =1;
 		}
-        if (arr[i] - start <= dist){
-            buscnt++;
-            if(buscnt==C){
-                start=0;
-                buscnt = 0;
-            }
-		}
-        else {
-			bus++;
-			start = 0;
-            buscnt= 0;
-        }
-        //if(dist == 0) cout <<i<<"번째 진행상황 : "<< start <<" "<<buscnt<<" "<<bus<<"\n";
-	}
+        else buscnt++;
+    }
+
 	return bus <= M;
 }
 
