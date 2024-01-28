@@ -12,15 +12,16 @@ int asize;
 bool IsPossible(int idx) {
 	string temp;
 	temp = A;
-	for (int i = 0; i < idx; i++) temp[arr[i] - 1] = ' ';
+	for (int i = 0; i < idx; i++) temp[arr[i]-1] = ' ';
 	int aidx = 0;
 
 	for (int i = 0; i < bsize; i++) {
-		while (aidx < asize && B[i] != temp[aidx]) aidx++;
-		if (aidx == asize)return false;
+		while (aidx<asize&& B[i] != temp[aidx]) {
+			aidx++;
+		}
+		if(aidx==asize)return false;
 		else aidx++;
 	}
-
 	return true;
 }
 
