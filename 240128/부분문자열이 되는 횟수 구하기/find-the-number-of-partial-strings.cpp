@@ -16,17 +16,10 @@ bool IsPossible(int idx) {
 	int aidx = 0;
 
 	int cnt = 0;
-	for (int i = 0; i < bsize; i++) {
-		if(B[i] == temp[aidx]) cnt++;
-		else{
-			while (B[i] != temp[aidx]) {
-			aidx++;
-			if (aidx == asize)return false;
-			}
-			cnt++;
-		}
+	for (int i = 0; i < asize;i++){
+		if(aidx<bsize && temp[i] == B[aidx]) aidx++;
 	}
-	return cnt == bsize;
+	return aidx == bsize;
 }
 
 int main() {
