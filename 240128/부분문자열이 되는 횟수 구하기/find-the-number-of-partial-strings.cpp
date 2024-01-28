@@ -13,12 +13,20 @@ bool IsPossible(int idx) {
 	string temp;
 	temp = A;
 	for (int i = 0; i < idx; i++) temp[arr[i]-1] = ' ';
-	int bidx = 0;
+	int aidx = 0;
 
-	for (int i = 0; i < asize;i++){
-		if(bidx < bsize && temp[i] == B[bidx]) bidx++;
+	int cnt = 0;
+	for (int i = 0; i < bsize; i++) {
+		if(B[i] == temp[aidx]) cnt++;
+		else{
+			while (B[i] != temp[aidx]) {
+			aidx++;
+			if (aidx == asize)return false;
+			}
+			cnt++;
+		}
 	}
-	return bidx == bsize;
+	return cnt == bsize;
 }
 
 int main() {
