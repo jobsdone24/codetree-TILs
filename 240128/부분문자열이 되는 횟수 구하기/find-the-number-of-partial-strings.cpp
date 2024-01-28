@@ -15,7 +15,7 @@ bool IsPossible(int idx) {
 	for (int i = 0; i < idx; i++) temp[arr[i]-1] = ' ';
 	int bidx = 0;
 
-	for (int i = 0; i < asize; i++) {
+	for (int i = 0; i < asize;i++){
 		if(bidx < bsize && temp[i] == B[bidx]) bidx++;
 	}
 	return bidx == bsize;
