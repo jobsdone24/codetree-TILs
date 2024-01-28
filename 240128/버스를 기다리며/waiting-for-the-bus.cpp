@@ -13,12 +13,14 @@ bool ispossible(int dist) {
 	int bus = 1;
     int buscnt = 1;
 	for (int i = 1; i < N; i++) {
-        buscnt++;
-        if (arr[i] - start > dist || buscnt>C){
+        //해당 사람이 버스를 새로 탄다면
+        if (arr[i] - start > dist || buscnt+1>C){
             bus++;
             start = arr[i];
-            buscnt = 0;
+            buscnt = 1;
         }
+        //기존의 버스 타기
+        else buscnt++;
     }
 
 	return bus <= M;
