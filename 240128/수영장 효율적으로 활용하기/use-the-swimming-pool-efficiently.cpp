@@ -9,8 +9,10 @@ int t[MAX_N + 1];
 bool IsPossible(int limit) {
 	int lane = 1;
 	int hap = t[0];
-	for (int i = 1; i < n; i++) {
+	if(t[0]>limit)return false;
+    for (int i = 1; i < n; i++) {
 		//다음 레인으로 바꿔주기
+        if(t[i]>limit) return false;
 		if (hap + t[i] > limit) {
 			lane++;
 			hap = t[i];
