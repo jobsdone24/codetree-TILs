@@ -16,11 +16,11 @@ bool ispossible(int dist) {
         if (arr[i] - start > dist ||buscnt > C){
             bus++;
             start = arr[i];
-            buscnt =1;
+            buscnt = 1;
 		}
         else buscnt++;
     }
-
+    if(buscnt>C || arr[N-1]-start >dist) bus++;
 	return bus <= M;
 }
 
