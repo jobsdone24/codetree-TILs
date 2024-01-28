@@ -9,7 +9,7 @@ int arr[MAX_N + 1];
 
 bool ispossible(int dist) {
 	//dist의 거리를 가지고 다 터트릴 수 있는지 확인하기
-	int start = 0;
+	int start = arr[0];
 	int bus = 1;
     int buscnt=1;
 	for (int i = 1; i < N; i++) {
