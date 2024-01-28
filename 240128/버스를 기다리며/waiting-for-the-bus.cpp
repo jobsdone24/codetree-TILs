@@ -11,16 +11,15 @@ bool ispossible(int dist) {
 	//dist의 거리를 가지고 다 터트릴 수 있는지 확인하기
 	int start = arr[0];
 	int bus = 1;
-    int buscnt=1;
+    int busidx = 0;
 	for (int i = 1; i < N; i++) {
-        if (arr[i] - start > dist ||buscnt > C){
+        if (arr[i] - start > dist || i+1-busidx>C){
             bus++;
             start = arr[i];
-            buscnt = 1;
-		}
-        else buscnt++;
+            busidx = i;
+        }
     }
-    if(buscnt>C || arr[N-1]-start >dist) bus++;
+
 	return bus <= M;
 }
 
