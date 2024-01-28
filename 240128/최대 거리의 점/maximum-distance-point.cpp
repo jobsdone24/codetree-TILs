@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 #define MAX_N 200000
 using namespace std;
 int arr[MAX_N + 1];
@@ -23,7 +24,7 @@ bool IsPossible(int x) {
 int main() {
 	cin >> n >> m;
 	for (int i = 0; i < n; i++)cin >> arr[i];
-
+    sort(arr,arr+n);
 	int left = 0;
 	int right = (int)1e9;
 	int dap = 0;
