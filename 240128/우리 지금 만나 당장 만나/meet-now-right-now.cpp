@@ -26,7 +26,7 @@ int main() {
 	double hi = 1e9;
 	double dap = 1e9;
 	
-	for(int i=1;i<=100;i++){
+	for(int i=1;i<=50;i++){
 		double mid = (lo + hi) / 2;
 		if (IsPossible(mid)) {
 			//만약 t초가 가능하다면 더 줄이기
