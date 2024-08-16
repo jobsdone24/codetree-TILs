@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include<iostream>
+#include<stdio.h>
 
 using namespace std;
 
@@ -78,6 +79,7 @@ int go(int n) {
 		return 1;
 	}
 
+
 	//왼쪽 이동 가능//
 	else if (y - 2 > 0 && map[x][y - 2] == 0 && map[x - 1][y - 1] == 0 && map[x + 1][y - 1] == 0 && map[x + 1][y - 2] == 0 && map[x + 2][y - 1] == 0) {
 		move(n, 3);
@@ -101,14 +103,14 @@ int gol_go(int n) {
 		if (ans == 0) break;
 	}
 
-	if (gol[n].x >= 1) return 1;
+	if (gol[n].x >= 2) return 1;
 	else return 0;
 }
 void show() {
 
 	for (int i = 1; i <= R; i++) {
 		for (int j = 1; j <= C; j++) {
-			cout << map[i][j];
+			printf("%2d ", map[i][j]);
 		}
 		cout << "\n";
 	}
